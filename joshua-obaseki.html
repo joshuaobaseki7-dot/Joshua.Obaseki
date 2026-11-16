@@ -1,0 +1,549 @@
+<title>Joshua Obaseki – About Me</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+/* Layout: one slate business card up top, then plain ruled sections below it. */
+:root {
+  --bg: #eceff0;
+  --surface: #ffffff;
+  --fg: #1d2529;
+  --muted: #56636a;
+  --line: #d3dade;
+  --card: #3f4a50;
+  --card-fg: #f4f6f7;
+  --card-muted: #b9c3c8;
+  --card-line: rgba(255,255,255,.28);
+  --accent: #9a5a0c;
+  --accent-on-card: #f0b35c;
+  --chip: #e3e8ea;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12171a; --surface: #1a2125; --fg: #e8edef; --muted: #9aa7ad; --line: #2b353a;
+    --card: #2d3a41; --card-fg: #f4f6f7; --card-muted: #b3bec4; --card-line: rgba(255,255,255,.26);
+    --accent: #e8a94f; --accent-on-card: #f0b35c; --chip: #263036;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12171a; --surface: #1a2125; --fg: #e8edef; --muted: #9aa7ad; --line: #2b353a;
+  --card: #2d3a41; --card-fg: #f4f6f7; --card-muted: #b3bec4; --card-line: rgba(255,255,255,.26);
+  --accent: #e8a94f; --accent-on-card: #f0b35c; --chip: #263036;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding-block: 40px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* ---------- Business card ---------- */
+.card {
+  background: var(--card);
+  color: var(--card-fg);
+  border-radius: 6px;
+  padding: clamp(24px, 5vw, 44px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 32px 48px;
+  box-shadow: 0 1px 0 rgba(255,255,255,.08) inset, 0 18px 40px -22px rgba(0,0,0,.45);
+}
+.mono-box {
+  width: 64px; height: 64px;
+  border: 1px solid var(--card-fg);
+  display: grid; place-items: center;
+  font-family: var(--font-display);
+  font-weight: 500; font-size: 26px; letter-spacing: .04em;
+  margin-bottom: 28px;
+}
+.card h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 6vw, 3.1rem);
+  line-height: 1.05;
+  letter-spacing: -.01em;
+  margin: 0 0 14px;
+  text-wrap: balance;
+}
+.title {
+  font-family: var(--font-mono);
+  font-size: .8rem;
+  line-height: 1.7;
+  color: var(--accent-on-card);
+  letter-spacing: .02em;
+  margin: 0;
+}
+.title span { display: block; }
+.contact {
+  align-self: end;
+  display: flex; flex-direction: column;
+  gap: 0;
+  min-width: 0;
+}
+.row {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--card-line);
+  min-width: 0;
+}
+.row:last-child { border-bottom: 1px solid var(--card-line); }
+.row .k {
+  font-family: var(--font-mono);
+  font-size: .7rem; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--card-muted);
+  width: 76px; flex: none;
+}
+.row .v { min-width: 0; overflow-wrap: anywhere; font-size: .95rem; }
+.row a.v { text-decoration: none; border-bottom: 1px solid var(--card-line); }
+.row a.v:hover { border-bottom-color: var(--accent-on-card); }
+.copy {
+  margin-left: auto;
+  font: 500 .75rem var(--font-mono);
+  color: var(--card-fg);
+  background: transparent;
+  border: 1px solid var(--card-line);
+  border-radius: 3px;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+.copy:hover { border-color: var(--accent-on-card); color: var(--accent-on-card); }
+
+.jump {
+  display: flex; flex-wrap: wrap; gap: 8px 22px;
+  margin: 20px 0 0;
+  font-family: var(--font-mono); font-size: .8rem;
+}
+.jump a { color: var(--muted); text-decoration: none; padding: 4px 0; border-bottom: 1px solid transparent; }
+.jump a:hover { color: var(--fg); border-bottom-color: var(--accent); }
+
+/* ---------- Sections ---------- */
+section { margin-top: 56px; scroll-margin-top: 16px; }
+h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 600;
+  margin: 0 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.about p { margin: 0; max-width: 65ch; font-size: 1.05rem; }
+
+.projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.project {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 20px;
+  min-width: 0;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.project h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; margin: 0; }
+.project p { margin: 0; color: var(--muted); font-size: .95rem; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 4px; }
+.tag {
+  font-family: var(--font-mono); font-size: .72rem;
+  background: var(--chip); color: var(--fg);
+  padding: 2px 8px; border-radius: 3px;
+}
+
+.edu { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 32px; }
+.school { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 22px; min-width: 0; }
+.school .when { font-family: var(--font-mono); font-size: .78rem; color: var(--accent); margin: 0 0 6px; }
+.school h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; margin: 0 0 4px; }
+.school p { margin: 0; color: var(--muted); }
+.school .prev { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); font-size: .92rem; }
+.certs h3, .skills h3 { font-family: var(--font-mono); font-size: .75rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.chips li { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: 4px 10px; font-size: .9rem; }
+
+.job { padding: 20px 0; border-top: 1px solid var(--line); }
+.job:first-of-type { border-top: 0; padding-top: 0; }
+.job-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 16px; }
+.job-head h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; margin: 0; min-width: 0; }
+.job-head h3 span { font-family: var(--font-body); font-weight: 400; color: var(--muted); }
+.dates { font-family: var(--font-mono); font-size: .78rem; color: var(--accent); white-space: nowrap; }
+.job ul { margin: 10px 0 0; padding-left: 1.1rem; color: var(--muted); font-size: .95rem; }
+.job li + li { margin-top: 4px; }
+.earlier { margin: 8px 0 0; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: .95rem; }
+.earlier strong { color: var(--fg); font-weight: 600; }
+.skills { margin-top: 28px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.edu-list { list-style: none; margin: 0; padding: 0; }
+.edu-list li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 16px; padding: 8px 0; border-top: 1px solid var(--line); font-size: .92rem; }
+.edu-list li:first-child { border-top: 0; padding-top: 0; }
+.edu-list span { min-width: 0; }
+.edu-list em { font-family: var(--font-mono); font-style: normal; font-size: .78rem; color: var(--accent); white-space: nowrap; }
+.volunteer { margin-top: 36px; }
+.volunteer > h3 { font-family: var(--font-mono); font-size: .75rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+.refs { margin: 24px 0 0; font-family: var(--font-mono); font-size: .8rem; color: var(--muted); }
+
+footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-family: var(--font-mono); font-size: .75rem; }
+
+@media (max-width: 720px) {
+  .card { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .mono-box { margin-bottom: 20px; }
+  .projects, .edu, .skills { grid-template-columns: minmax(0, 1fr); }
+  .dates { white-space: normal; }
+  .wrap { padding-block: 24px 40px; }
+  section { margin-top: 44px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .jump a, .copy, .row a.v { transition: color .15s, border-color .15s; }
+}
+</style>
+
+<main class="wrap">
+  <header class="card">
+    <div>
+      <div class="mono-box" aria-hidden="true">JO</div>
+      <h1>Joshua Obaseki</h1>
+      <p class="title">
+        <span>IT Systems Administrator</span>
+        <span>IT Support</span>
+        <span>Aspiring Cloud Administrator</span>
+      </p>
+    </div>
+    <div class="contact">
+      <div class="row"><span class="k">Based</span><span class="v">Boston, MA</span></div>
+      <div class="row">
+        <span class="k">LinkedIn</span>
+        <a class="v" href="https://www.linkedin.com/in/joshua-obaseki-370bb921b" target="_blank" rel="noopener">joshua-obaseki</a>
+      </div>
+      <div class="row">
+        <span class="k">Email</span>
+        <a class="v" id="email-text" href="mailto:JoshuaObaseki7@gmail.com">JoshuaObaseki7@gmail.com</a>
+        <button class="copy" id="copy-email" type="button">Copy</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="jump" aria-label="Page sections">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">School</a>
+    <a href="#resume">Resume</a>
+  </nav>
+
+  <section id="about" class="about">
+    <h2>About</h2>
+    <p>IT professional with 2+ years of hands-on IT experience and a background in IT management. I'm finishing a Bachelor's degree in Information Technology at UMass Boston, with experience in Linux, Windows Server, networking, troubleshooting, and technical projects. I'm passionate about cloud computing, cybersecurity, and building reliable IT infrastructure.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <article class="project">
+        <h3>Linux Math Game</h3>
+        <p>Developed a math game using Linux, shell scripting, and command-line tools.</p>
+        <div class="tags"><span class="tag">Linux</span><span class="tag">Shell scripting</span><span class="tag">CLI</span></div>
+      </article>
+      <article class="project">
+        <h3>Parking Ticket Management System</h3>
+        <p>Created a coding project focused on managing parking ticket information and system functionality.</p>
+        <div class="tags"><span class="tag">Coding project</span></div>
+      </article>
+      <article class="project">
+        <h3>Windows Server 2019 Active Directory Home Lab</h3>
+        <p>Configured a Windows Server environment and practiced Active Directory, DNS, DHCP, and user management.</p>
+        <div class="tags"><span class="tag">Windows Server 2019</span><span class="tag">Active Directory</span><span class="tag">DNS</span><span class="tag">DHCP</span></div>
+      </article>
+      <article class="project">
+        <h3>Linux Encryption Project</h3>
+        <p>Used Ubuntu/Linux and OpenSSL to encrypt and decrypt information using symmetric encryption.</p>
+        <div class="tags"><span class="tag">Ubuntu</span><span class="tag">OpenSSL</span><span class="tag">Symmetric encryption</span></div>
+      </article>
+      <article class="project">
+        <h3>Zebra Tablet &amp; Handheld Device Management</h3>
+        <p>Worked with Zebra enterprise tablets and handheld devices, handling device configuration, management, and troubleshooting. Gained hands-on experience supporting mobile technology used in business operations.</p>
+        <div class="tags"><span class="tag">Zebra devices</span><span class="tag">SOTI MobiControl</span><span class="tag">Mobile device management</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>School</h2>
+    <div class="edu">
+      <div class="school">
+        <p class="when">Expected 2027</p>
+        <h3>University of Massachusetts Boston</h3>
+        <p>Bachelor's in Information Technology, IT Systems Administration</p>
+        <p class="prev">Previously: Bunker Hill Community College (2023)</p>
+      </div>
+      <div class="certs">
+        <h3>Certificates</h3>
+        <ul class="chips">
+          <li>CompTIA A+</li>
+          <li>CompTIA Security+</li>
+          <li>CCNA</li>
+          <li>Google Cybersecurity</li>
+          <li>Google Crash Course on Python</li>
+          <li>Java</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="resume">
+    <h2>Resume</h2>
+
+    <article class="job">
+      <div class="job-head">
+        <h3>Entry Level IT Support <span>/ PRWT</span></h3>
+        <span class="dates">Jul 2024 – Present</span>
+      </div>
+      <ul>
+        <li>Resolved hardware, software, and network issues for over 100 users, maintaining minimal downtime.</li>
+        <li>Installed, configured, and updated operating systems and applications on desktops and laptops.</li>
+        <li>Monitored system performance, identifying and resolving potential issues proactively.</li>
+        <li>Assisted in network setup and maintenance, including Wi-Fi, VPN, and LAN connectivity.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <div class="job-head">
+        <h3>Gym Monitor <span>/ Roxbury Tenets of Housing</span></h3>
+        <span class="dates">Jan 2024 – Sep 2024</span>
+      </div>
+      <ul>
+        <li>Maintained a safe and welcoming gym environment by monitoring equipment usage and ensuring members followed facility policies.</li>
+        <li>Provided excellent customer service by assisting members with questions, concerns, and general fitness center needs.</li>
+        <li>Demonstrated strong attention to detail by identifying safety hazards and reporting maintenance issues promptly.</li>
+        <li>Built positive relationships with members through professionalism, communication, and a friendly, approachable attitude.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <div class="job-head">
+        <h3>Front Desk <span>/ Boston Sports Club</span></h3>
+        <span class="dates">Feb 2024 – Jul 2024</span>
+      </div>
+      <ul>
+        <li>Delivered exceptional customer service by assisting members with inquiries, memberships, and facility information.</li>
+        <li>Managed front desk operations, including member check-ins, scheduling, and payment processing.</li>
+        <li>Resolved member concerns professionally to maintain a positive fitness club experience.</li>
+        <li>Supported membership sales efforts by promoting club services and fitness programs.</li>
+        <li>Collaborated with team members to ensure a clean, safe, and welcoming environment for all guests.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <div class="job-head">
+        <h3>IT Support Call Center <span>/ Grand Circle Travel</span></h3>
+        <span class="dates">Jan 2023 – Dec 2023</span>
+      </div>
+      <ul>
+        <li>High-stress tolerance, technical agility, and customer-centric problem solving.</li>
+        <li>Customer service, excellent communication skills, and active listening.</li>
+        <li>Problem solving, conflict resolution, and multitasking.</li>
+        <li>Proficient in using computers, Microsoft Office applications, email systems, and various software programs to efficiently complete tasks and support daily business operations.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <div class="job-head">
+        <h3>Manager <span>/ AT&amp;T</span></h3>
+        <span class="dates">Mar 2023 – Nov 2023</span>
+      </div>
+      <ul>
+        <li>Trained new employees on company policies, systems, and customer service standards.</li>
+        <li>Implemented process improvements that reduced transaction errors and wait times.</li>
+        <li>Analyzed sales and performance data to identify trends and inform operational decisions.</li>
+        <li>Ensured compliance with company policies, safety protocols, and regulatory requirements.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <div class="job-head">
+        <h3>Athlete <span>/ Nike, Boston MA</span></h3>
+        <span class="dates">Jan 2022 – Dec 2023</span>
+      </div>
+      <ul>
+        <li>Served as a brand ambassador at events, engaging with audiences and promoting Nike products.</li>
+        <li>Assisted in training programs and workshops, demonstrating techniques and motivating participants.</li>
+        <li>Documented performance metrics and progress to support personal and team development goals.</li>
+        <li>Supported community engagement initiatives, encouraging sports participation and healthy lifestyles.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <div class="job-head">
+        <h3>Crew Member <span>/ AMC Theaters, Boston MA</span></h3>
+        <span class="dates">Jan 2019 – Dec 2019</span>
+      </div>
+      <ul>
+        <li>Assisted over 200 guests daily with ticketing, concessions, and inquiries, maintaining high satisfaction.</li>
+        <li>Prepared and served food and beverages, following health and safety standards.</li>
+        <li>Maintained cleanliness of auditoriums, lobbies, and restrooms to meet operational standards.</li>
+        <li>Operated point-of-sale systems accurately, handling cash and card transactions.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <div class="job-head">
+        <h3>Cashier and Pre-Cook <span>/ Metro (Grocery Store), St. Catharines ON</span></h3>
+        <span class="dates">Jun 2018 – Oct 2018</span>
+      </div>
+      <ul>
+        <li>Processed cash, card, and digital payments accurately for over 100 customers daily.</li>
+        <li>Assisted in preparing and portioning food items according to store standards.</li>
+        <li>Maintained cleanliness and organization of workstations, storage, and service areas.</li>
+        <li>Restocked shelves and monitored inventory to ensure product availability.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <div class="job-head">
+        <h3>Newspaper Delivery <span>/ St. Catharines Standard, St. Catharines ON</span></h3>
+        <span class="dates">Mar 2014 – May 2016</span>
+      </div>
+      <ul>
+        <li>Maintained delivery routes efficiently, optimizing time and fuel usage.</li>
+        <li>Addressed customer inquiries and resolved minor delivery issues professionally.</li>
+        <li>Followed safety protocols while handling and transporting newspapers.</li>
+        <li>Developed reliability, time management, and accountability through consistent daily performance.</li>
+      </ul>
+    </article>
+
+    <div class="skills">
+      <div>
+        <h3>Technical skills</h3>
+        <ul class="chips">
+          <li>Hardware troubleshooting</li>
+          <li>Software installation</li>
+          <li>Windows, macOS, Linux</li>
+          <li>Network setup and maintenance</li>
+          <li>Network troubleshooting</li>
+          <li>IT ticketing systems</li>
+          <li>Backup and recovery</li>
+          <li>Cybersecurity awareness</li>
+          <li>Cloud platforms</li>
+          <li>Basic IT support</li>
+          <li>SOTI MobiControl</li>
+          <li>Zebra handheld and tablet management</li>
+          <li>External audit support</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Working style</h3>
+        <ul class="chips">
+          <li>Customer support</li>
+          <li>Employee training</li>
+          <li>Problem solving</li>
+          <li>Excellent communicator</li>
+          <li>Detail-oriented</li>
+          <li>Quick learner</li>
+          <li>Dependable</li>
+          <li>Resilient under pressure</li>
+          <li>Team-oriented</li>
+          <li>Organized</li>
+          <li>Self-motivated</li>
+          <li>Relationship builder</li>
+          <li>Goal-driven</li>
+          <li>Honest and trustworthy</li>
+          <li>Reliable</li>
+          <li>Strong work ethic</li>
+          <li>Positive attitude</li>
+          <li>Empathetic</li>
+          <li>Patient</li>
+          <li>Heavy lifting capacity</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="skills">
+      <div>
+        <h3>Education</h3>
+        <ul class="edu-list">
+          <li><span><strong>Information Technology</strong>, University of Massachusetts Boston</span><em>05/2027</em></li>
+          <li><span>Bunker Hill Community College</span><em>01/2023</em></li>
+          <li><span>Phoenix Charter Academy, Boston MA</span><em>01/2020</em></li>
+          <li><span>Brighton High School, Boston MA</span><em>01/2018</em></li>
+          <li><span>St. Francis Catholic Secondary School, St. Catharines ON</span><em>01/2017</em></li>
+          <li><span>St. James Catholic Elementary School, St. Catharines ON</span><em>01/2015</em></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Certificates</h3>
+        <ul class="chips">
+          <li>CompTIA A+</li>
+          <li>CompTIA Security+</li>
+          <li>CCNA</li>
+          <li>Google Cybersecurity</li>
+          <li>Google Crash Course on Python</li>
+          <li>Java</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="volunteer">
+      <h3>Volunteer experience</h3>
+      <article class="job">
+        <div class="job-head">
+          <h3>Coach's Assistant <span>/ Catholic Youth Organizations, St. Catharines ON</span></h3>
+          <span class="dates">2016</span>
+        </div>
+        <ul>
+          <li>Assisted in teaching younger kids how to play basketball, and assessed and monitored their skills.</li>
+          <li>Helped the coach develop a teaching strategy, organized kids into small groups for practice, and distributed equipment and jerseys.</li>
+          <li>Attended meetings with the coach and staff, followed injury procedures, and modeled good sportsmanship and conduct.</li>
+        </ul>
+      </article>
+      <article class="job">
+        <div class="job-head">
+          <h3>Groundskeeper <span>/ St. Catharines ON</span></h3>
+          <span class="dates">2017</span>
+        </div>
+        <ul>
+          <li>Cut neighbors' grass, brush, trees, shrubs, and hedges using a mower and related tools.</li>
+          <li>Swept and removed garbage in the surrounding area.</li>
+        </ul>
+      </article>
+    </div>
+
+    <p class="refs">References available upon request.</p>
+  </section>
+
+  <footer>Joshua Obaseki · Boston, MA</footer>
+</main>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy-email');
+  var txt = document.getElementById('email-text');
+  if (!btn || !txt) return;
+  function selectText() {
+    try {
+      var r = document.createRange(); r.selectNodeContents(txt);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    } catch (e) {}
+  }
+  btn.addEventListener('click', function () {
+    var value = txt.textContent.trim();
+    var done = function (ok) {
+      btn.textContent = ok ? 'Copied' : 'Select + copy';
+      if (!ok) selectText();
+      setTimeout(function () { btn.textContent = 'Copy'; }, 1800);
+    };
+    try {
+      navigator.clipboard.writeText(value).then(function () { done(true); }, function () { done(false); });
+    } catch (e) { done(false); }
+  });
+})();
+</script>
